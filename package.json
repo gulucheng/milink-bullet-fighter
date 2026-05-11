@@ -1,0 +1,17 @@
+{
+  "name": "milink-bullet-fighter",
+  "version": "1.0.0",
+  "description": "MiLink 弹幕战机 — 多人协作弹幕射击游戏，支持语音控制、Agent 智能助手、Boss 战、成就系统",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["game", "bullet-hell", "websocket", "multiplayer", "voice-control", "canvas"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  }
+}
