@@ -335,7 +335,8 @@ const lbBody = document.getElementById('lbBody');
 const socket = io();
 socket.on('connect', () => { socket.emit('getLeaderboard'); });
 socket.on('leaderboardUpdate', data => { renderLeaderboard(data); });
-function renderLeaderboard(data) { if(!data||data.length===0){lbBody.innerHTML='<div style="font-size:11px;color:#556;text-align:center">暂无数据</div>';return;} let h=''; for(let i=0;i<Math.min(5,data.length);i++){const e=data[i]; h+=`<div class="lb-row"><span class="nm">${e.nickname}</span><span class="wv">W${e.wave}</span></div>`;} lbBody.innerHTML=h; }
+function escapeHTML(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function renderLeaderboard(data) { if(!data||data.length===0){lbBody.innerHTML='<div style="font-size:11px;color:#556;text-align:center">暂无数据</div>';return;} let h=''; for(let i=0;i<Math.min(5,data.length);i++){const e=data[i]; h+=`<div class="lb-row"><span class="nm">${escapeHTML(e.nickname)}</span><span class="wv">W${e.wave}</span></div>`;} lbBody.innerHTML=h; }
 
 // ---------- Audio ----------
 const AudioSys = (() => {

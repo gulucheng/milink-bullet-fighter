@@ -2,13 +2,12 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const os = require('os');
-const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 function getLocalIP() {
   const interfaces = os.networkInterfaces();
@@ -75,4 +74,12 @@ server.listen(PORT, () => {
   const localIP = getLocalIP();
   console.log(`Server running on http://localhost:${PORT}`);
   console.log(`LAN: http://${localIP}:${PORT}`);
+});
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Please close the other process or use a different port.`);
+    process.exit(1);
+  } else {
+    throw err;
+  }
 });
