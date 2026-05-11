@@ -132,12 +132,13 @@ Wave Complete
 ## 项目结构
 
 ```
-mimo_sheng/
+milink-bullet-fighter/
 ├── server.js              # Express + Socket.io 服务器
 ├── package.json
-├── public/
-│   ├── index.html         # 主游戏（全部前端逻辑）
-│   └── controller.html    # 手机控制器
+├── package-lock.json
+├── index.html             # 主游戏（全部前端逻辑）
+├── controller.html        # 手机控制器
+├── bg.jpg                 # 游戏背景图
 └── README.md
 ```
 
